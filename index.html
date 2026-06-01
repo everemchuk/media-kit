@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Kamila - Media Kit</title>
+	<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Lato:wght@300;400;700&amp;family=Great+Vibes&amp;display=swap"
+		rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<script>
+		tailwind.config = {
+			darkMode: "class",
+			theme: {
+				extend: {
+					colors: {
+						primary: "#a87b7b", // Rose gold/muted brownish pink
+						secondary: "#f9f7f2", // Very light cream
+						"accent-pink": "#d4a5a5",
+						"text-dark": "#4a4a4a",
+						"text-light": "#f5f5f5",
+						"background-light": "#fdfbf7", // Warm off-white
+						"background-dark": "#1a1a1a", // Soft dark gray
+						"card-light": "#ffffff",
+						"card-dark": "#262626",
+					},
+					fontFamily: {
+						sans: ["Lato", "sans-serif"],
+						serif: ["Playfair Display", "serif"],
+						script: ["Great Vibes", "cursive"],
+					},
+					borderRadius: {
+						DEFAULT: "0.5rem",
+						'xl': '1rem',
+						'2xl': '2rem',
+						't-arch': '10rem 10rem 0 0',
+					},
+				},
+			},
+		};
+	</script>
+	<style>
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 6rem;
+		}
+
+		.arch-image {
+			border-radius: 9999px 9999px 0 0;
+		}
+
+		.phone-frame {
+			border-radius: 2rem;
+			box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+		}
+
+		.play-overlay {
+			background: rgba(0, 0, 0, 0.2);
+			transition: all 0.3s ease;
+		}
+
+		.play-overlay:hover {
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		.text-script {
+			font-family: 'Great Vibes', cursive;
+		}
+
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: #fdfbf7;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #a87b7b;
+			border-radius: 4px;
+		}
+
+		/* Performance stat proof popup */
+		.stat-item {
+			position: relative;
+		}
+
+		.stat-proof {
+			position: absolute;
+			right: 100%;
+			padding-right: 2rem;
+			top: 50%;
+			transform: translateY(-50%) scale(0.92);
+			transform-origin: right center;
+			width: 24rem;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.4, 0, 0.15, 1);
+			z-index: 30;
+		}
+
+		.stat-item:hover .stat-proof,
+		.stat-item.proof-active .stat-proof {
+			opacity: 1;
+			transform: translateY(-50%) scale(1);
+			pointer-events: auto;
+		}
+
+		/* On smaller screens, hide the hover proof popup entirely as we will use the lightbox directly */
+		@media (max-width: 1280px) {
+			.stat-proof {
+				display: none;
+			}
+		}
+		.investment-row {
+			position: relative;
+			cursor: pointer;
+		}
+
+		.investment-row::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: #8c7365; /* primary color */
+			transform: scaleX(0);
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+			z-index: 10;
+			bottom: -1px; /* Align with the existing bottom border */
+			transform-origin: left;
+		}
+
+		.investment-row:hover::after {
+			transform: scaleX(1);
+		}
+
+		.terms-card {
+			position: relative;
+		}
+
+		.terms-card::after {
+			content: '';
+			position: absolute;
+			top: -1px; left: -1px; right: -1px; bottom: -1px;
+			border: 2px solid #8c7365;
+			clip-path: inset(0 100% 0 0); /* Left to right by default */
+			transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+			pointer-events: none;
+			border-radius: inherit;
+		}
+
+		.terms-card.terms-card-reverse::after {
+			clip-path: inset(0 0 0 100%); /* Right to left */
+		}
+
+		.terms-card:hover::after {
+			clip-path: inset(0 0 0 0);
+		}
+
+		/* Scroll Animation */
+		body.js-scroll-animate section {
+			opacity: 0;
+			transform: translateY(40px);
+			transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+			will-change: opacity, transform;
+		}
+		body.js-scroll-animate section.is-visible {
+			opacity: 1;
+			transform: none;
+		}
+	</style>
+</head>
+
+<body
+	class="bg-background-light dark:bg-background-dark text-text-dark dark:text-text-light font-sans transition-colors duration-300">
+	<nav
+		class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-primary/10 dark:border-primary/20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-20">
+				<div class="flex-shrink-0 flex items-center">
+					<span class="font-serif font-bold text-xl tracking-widest text-primary uppercase">Media Kit</span>
+				</div>
+				<div class="hidden md:flex space-x-8 items-center">
+					<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary uppercase tracking-wider transition-colors"
+						href="#insights">Performance</a>
+					<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary uppercase tracking-wider transition-colors"
+						href="#skincare">Videography</a>
+					<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary uppercase tracking-wider transition-colors"
+						href="#photography">Photography</a>
+					<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary uppercase tracking-wider transition-colors"
+						href="#investments">Rates</a>
+					<a class="px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-white dark:hover:text-white transition-all text-sm font-medium uppercase tracking-wider rounded-full"
+						href="#contact">Contact</a>
+				</div>
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none">
+						<span class="material-icons" id="menu-icon">menu</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Mobile Menu -->
+		<div id="mobile-menu"
+			class="md:hidden absolute left-0 right-0 top-full border-t border-primary/10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+			<div class="px-4 py-6 space-y-4">
+				<a class="block text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary uppercase tracking-wider transition-colors"
+					href="#insights">Performance</a>
+				<a class="block text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary uppercase tracking-wider transition-colors"
+					href="#videography">Videography</a>
+				<a class="block text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary uppercase tracking-wider transition-colors"
+					href="#photography">Photography</a>
+				<a class="block text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary uppercase tracking-wider transition-colors"
+					href="#investments">Rates</a>
+				<a class="inline-block px-5 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all text-sm font-medium uppercase tracking-wider rounded-full"
+					href="#contact">Contact</a>
+			</div>
+		</div>
+	</nav>
+
+	<section class="py-12 md:py-24 relative overflow-hidden">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+				<div
+					class="order-2 md:order-1 space-y-6 md:pr-12 text-center md:text-left items-center md:items-start flex flex-col">
+					<h2 class="text-script text-5xl md:text-7xl text-primary font-light transform -rotate-2 origin-left">Meet</h2>
+					<h1
+						class="font-serif text-6xl md:text-8xl text-primary/80 dark:text-primary font-normal tracking-wide leading-none !mt-0">
+						KAMILA</h1>
+					<div class="mt-8 text-gray-600 dark:text-gray-300 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+						<p>United States based Beauty and Lifestyle Content Creator with <span class="italic font-serif text-primary">3+ years of experience</span>. Specializing in soft glam makeup, hairstyles, beauty hacks and aesthetic lifestyle content. I create <span class="text-primary font-medium">high-performing videos</span> that <span class="italic font-serif text-primary">drive engagement</span> and <span class="text-primary font-medium">sales</span> for beauty brands.</p>
+					</div>
+					<div class="pt-6 flex items-center justify-center md:justify-start space-x-4">
+						<span class="uppercase tracking-widest text-sm font-bold text-primary">Let's Connect:</span>
+						<div class="flex space-x-4 items-center">
+							<a class="text-gray-400 hover:text-primary transition-colors" href="https://www.tiktok.com/@milka_mk2?_r=1&_t=ZP-96pxcAQkiEQ" target="_blank" rel="noopener noreferrer">
+								<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+							</a>
+							<a class="text-gray-400 hover:text-primary transition-colors" href="https://www.instagram.com/__milka_mk?igsh=MWp3dTM2NXdma2oweA==" target="_blank" rel="noopener noreferrer">
+								<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+							</a>
+							<div class="relative group flex items-center">
+								<a class="text-gray-400 hover:text-primary transition-colors flex items-center" href="mailto:milochka_mkk@gmail.com">
+									<svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+										<polyline points="22,6 12,13 2,6"></polyline>
+									</svg>
+								</a>
+								<!-- Custom Tooltip -->
+								<div class="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 px-3 py-2 bg-white dark:bg-card-dark text-gray-600 dark:text-gray-300 text-sm font-sans rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl whitespace-nowrap flex items-center gap-3 border border-primary/20 z-50">
+									<span class="select-all">milochka_mkk@gmail.com</span>
+									<button onclick="navigator.clipboard.writeText('milochka_mkk@gmail.com'); const btn=this; const original=btn.innerHTML; btn.innerHTML='<span class=\'text-primary font-bold\'>Copied!</span>'; setTimeout(()=>btn.innerHTML=original, 2000)" class="text-gray-400 hover:text-primary transition-colors focus:outline-none flex items-center justify-center border-l border-primary/20 pl-3" title="Copy email address">
+										<span class="material-icons text-[16px]">content_copy</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="order-1 md:order-2 relative flex justify-center md:justify-end">
+					<div class="relative w-full max-w-md aspect-[3/4]">
+						<img alt="Kamila Portrait"
+							class="relative w-full h-full object-cover arch-image border-[12px] border-white shadow-xl z-10 grayscale-[10%] sepia-[10%] -scale-x-100"
+							src="photos/hero-photo.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-8" id="videography"></div>
+
+	<section class="py-16 md:py-24 bg-background-light dark:bg-background-dark relative" id="insights">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+				<div class="relative">
+					<div class="relative h-[500px] w-full max-w-md mx-auto">
+						<div
+							class="absolute top-0 left-0 w-3/4 h-3/4 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl z-10">
+							<img alt="Creator selfie" class="w-full h-full object-cover" src="photos/performance/performance.jpg" />
+						</div>
+						<div class="absolute top-4 right-0 lg:-right-12 z-20 text-right">
+							<h3 class="text-script text-5xl md:text-6xl text-primary/70">Creator</h3>
+							<h2 class="font-serif text-3xl md:text-4xl text-primary/90 uppercase">Insights</h2>
+						</div>
+						<!-- Left Detail Shot (TikTok) -->
+						<div class="absolute bottom-10 left-0 lg:-left-4 w-28 md:w-36 aspect-[9/16] overflow-hidden rounded-2xl border-4 border-white dark:border-gray-800 shadow-2xl z-30 transform -rotate-6 bg-gray-100 dark:bg-gray-800 transition-all duration-300 hover:scale-[1.05] hover:z-40">
+							<div class="relative w-full h-full">
+								<div class="photo-lightbox-trigger cursor-pointer block h-full w-full">
+									<img alt="TikTok performance" class="w-full h-full object-cover" src="photos/performance/tiktok.png" />
+								</div>
+								<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors z-10">
+									<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+								</a>
+							</div>
+						</div>
+						<!-- Right Detail Shot (Instagram) -->
+						<div class="absolute bottom-10 left-[45%] lg:left-[50%] w-28 md:w-36 aspect-[9/16] overflow-hidden rounded-2xl border-4 border-white dark:border-gray-800 shadow-2xl z-30 transform rotate-6 bg-gray-100 dark:bg-gray-800 transition-all duration-300 hover:scale-[1.05] hover:z-40">
+							<div class="relative w-full h-full">
+								<div class="photo-lightbox-trigger cursor-pointer block h-full w-full">
+									<img alt="Instagram performance" class="w-full h-full object-cover" src="photos/performance/instagram.png" />
+								</div>
+								<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors z-10">
+									<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div
+						class="mt-8 bg-white/50 dark:bg-zinc-800/50 p-6 rounded-xl border border-primary/20 backdrop-blur-sm max-w-md mx-auto">
+						<p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+							Through partnership with me, brands can utilise digital assets such as testimonials, unboxing videos, product reviews, and
+							more, to build their <span class="italic text-primary">authenticity</span> and <span
+								class="italic text-primary">brand awareness</span>.
+						</p>
+					</div>
+				</div>
+				<div>
+					<div class="text-center lg:text-left mb-12">
+						<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Performance</h2>
+					</div>
+					<div class="space-y-8">
+						<div class="flex items-center group stat-item cursor-pointer">
+							<div class="relative flex-shrink-0">
+								<div class="w-24 h-24 rounded-full border-4 border-primary flex items-center justify-center bg-white dark:bg-zinc-800 group-hover:bg-primary transition-colors duration-300">
+									<span class="text-lg font-bold text-primary group-hover:text-white transition-colors">83M</span>
+								</div>
+								<div class="absolute bottom-0 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 shadow-sm border border-primary/20 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all">
+									<span class="material-icons text-[18px]">ads_click</span>
+								</div>
+							</div>
+							<div class="ml-6">
+								<p class="text-gray-600 dark:text-gray-300 text-sm"><span class="text-primary font-bold">83 Million</span>
+									<span class="italic font-serif text-primary">Views for last 30 days</span> across all platforms, proving content that captures attention and keeps audiences watching</p>
+							</div>
+							<div class="stat-proof">
+								<div class="flex gap-3">
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/views/tiktok.jpeg" alt="TikTok views proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+										</a>
+									</div>
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/views/instagram.jpeg" alt="Instagram views proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex items-center group stat-item cursor-pointer">
+							<div class="relative flex-shrink-0">
+								<div class="w-24 h-24 rounded-full border-4 border-primary/80 flex items-center justify-center bg-white dark:bg-zinc-800 group-hover:bg-primary/80 transition-colors duration-300">
+									<span class="text-lg font-bold text-primary/80 group-hover:text-white transition-colors">2.32M</span>
+								</div>
+								<div class="absolute bottom-0 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 shadow-sm border border-primary/20 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all">
+									<span class="material-icons text-[18px]">ads_click</span>
+								</div>
+							</div>
+							<div class="ml-6">
+								<p class="text-gray-600 dark:text-gray-300 text-sm"><span class="text-primary font-bold">2.32 Million</span>
+									<span class="italic font-serif text-primary">Interactions</span> including likes, comments, shares, and saves that drive real community engagement</p>
+							</div>
+							<div class="stat-proof">
+								<div class="flex gap-3">
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/interactions/tiktok.png" alt="TikTok interactions proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+										</a>
+									</div>
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/interactions/instagram.jpeg" alt="Instagram interactions proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex items-center group stat-item cursor-pointer">
+							<div class="relative flex-shrink-0">
+								<div class="w-24 h-24 rounded-full border-4 border-primary/90 flex items-center justify-center bg-white dark:bg-zinc-800 group-hover:bg-primary/90 transition-colors duration-300">
+									<span class="text-lg font-bold text-primary/90 group-hover:text-white transition-colors">110K</span>
+								</div>
+								<div class="absolute bottom-0 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 shadow-sm border border-primary/20 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all">
+									<span class="material-icons text-[18px]">ads_click</span>
+								</div>
+							</div>
+							<div class="ml-6">
+								<p class="text-gray-600 dark:text-gray-300 text-sm"><span class="text-primary font-bold">110K</span>
+									<span class="italic font-serif text-primary">Profile Visits</span> — unique users who actively explored the profile to discover more branded content</p>
+							</div>
+							<div class="stat-proof">
+								<div class="flex gap-3">
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/visits/tiktok.png" alt="TikTok visits proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+										</a>
+									</div>
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/visits/instagram.png" alt="Instagram visits proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex items-center group stat-item cursor-pointer">
+							<div class="relative flex-shrink-0">
+								<div class="w-24 h-24 rounded-full border-4 border-primary/70 flex items-center justify-center bg-white dark:bg-zinc-800 group-hover:bg-primary/70 transition-colors duration-300">
+									<span class="text-lg font-bold text-primary/70 group-hover:text-white transition-colors">20K</span>
+								</div>
+								<div class="absolute bottom-0 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 shadow-sm border border-primary/20 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all">
+									<span class="material-icons text-[18px]">ads_click</span>
+								</div>
+							</div>
+							<div class="ml-6">
+								<p class="text-gray-600 dark:text-gray-300 text-sm"><span class="text-primary font-bold">20K</span>
+									<span class="italic font-serif text-primary">Followers</span> — a rapidly growing, highly engaged audience built through consistent, authentic content</p>
+							</div>
+							<div class="stat-proof">
+								<div class="flex gap-3">
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/followers/tiktok.png" alt="TikTok followers proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+										</a>
+									</div>
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/followers/instagram.png" alt="Instagram followers proof" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+										<a href="#" class="absolute top-2 right-2 w-8 h-8 bg-black/60 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-black/80 transition-colors">
+											<svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex items-center group stat-item cursor-pointer">
+							<div class="relative flex-shrink-0">
+								<div class="w-24 h-24 rounded-full border-4 border-primary/60 flex items-center justify-center bg-white dark:bg-zinc-800 group-hover:bg-primary/60 transition-colors duration-300">
+									<span class="material-icons text-4xl text-primary/60 group-hover:text-white transition-colors">local_fire_department</span>
+								</div>
+								<div class="absolute bottom-0 -right-2 w-8 h-8 rounded-full bg-white dark:bg-zinc-800 shadow-sm border border-primary/20 flex items-center justify-center text-primary/70 group-hover:text-primary group-hover:scale-110 transition-all">
+									<span class="material-icons text-[18px]">ads_click</span>
+								</div>
+							</div>
+							<div class="ml-6">
+								<p class="text-gray-600 dark:text-gray-300 text-sm"><span class="text-primary font-bold">Viral</span>
+									<span class="italic font-serif text-primary">Videos</span> — consistently creating high-performing, trend-driven content that breaks through algorithms and reaches millions of organic viewers</p>
+							</div>
+							<div class="stat-proof">
+								<div class="flex gap-3">
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/viral/viral-1.png" alt="Viral video proof 1" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+									</div>
+									<div class="relative flex-1">
+										<div class="photo-lightbox-trigger cursor-pointer block transition-transform hover:scale-[1.02]">
+											<img src="photos/performance/viral/viral-2.png" alt="Viral video proof 2" class="w-full aspect-[9/16] object-cover rounded-2xl shadow-2xl border-2 border-white dark:border-gray-700" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-8" id="videography"></div>
+
+	<section class="py-16 md:py-24" id="skincare">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="text-center mb-16">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Skincare</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Video Examples</h2>
+			</div>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+				<div class="group cursor-pointer skincare-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/skincare/SC1.mp4" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay skincare-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Aesthetic Edit</p>
+				</div>
+				<div class="group cursor-pointer skincare-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/skincare/SC2.mp4" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay skincare-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Product showcase</p>
+				</div>
+				<div class="group cursor-pointer skincare-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/skincare/SC3.mp4" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay skincare-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Before & After</p>
+				</div>
+				<div class="group cursor-pointer skincare-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/skincare/SC4.MOV#t=2" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay skincare-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Evening Routine</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 md:py-24 bg-white dark:bg-zinc-900/30" id="haircare">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="text-center mb-16">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Haircare</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Video Examples</h2>
+			</div>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+				<div class="group cursor-pointer hair-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/haircare/HC1.mp4" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay hair-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						3-Step Routine</p>
+				</div>
+				<div class="group cursor-pointer hair-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/haircare/HC2.mp4#t=10" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay hair-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Hair Styling</p>
+				</div>
+				<div class="group cursor-pointer hair-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/haircare/HC3.mp4#t=18.5" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay hair-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Product Demo & <br> Brand Awareness</p>
+				</div>
+				<div class="group cursor-pointer hair-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/haircare/HC4.MOV#t=4.5" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay hair-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Product Teaser</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 md:py-24" id="makeup">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="text-center mb-16">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Makeup</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Video Examples</h2>
+			</div>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+				<div class="group cursor-pointer makeup-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/makeup/MK1.MP4#t=5" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay makeup-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Trending Audio</p>
+				</div>
+				<div class="group cursor-pointer makeup-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/makeup/MK2.mp4#t=8" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay makeup-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Shade Try-On</p>
+				</div>
+				<div class="group cursor-pointer makeup-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/makeup/MK3.mp4#t=8" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay makeup-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Voice-over Tutorial</p>
+				</div>
+				<div class="group cursor-pointer makeup-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/makeup/MK4.mp4#t=30" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay makeup-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Product In-Use</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-8" id="videography"></div>
+
+	<section class="py-16 md:py-24" id="beauty">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="text-center mb-16">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Beauty & Fashion</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Video Examples</h2>
+			</div>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+				<div class="group cursor-pointer beauty-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/beauty/BF1.mp4#t=0.001" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay beauty-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Unboxing</p>
+				</div>
+				<div class="group cursor-pointer beauty-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/beauty/BF2.MP4#t=8" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay beauty-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Mermaid Glow</p>
+				</div>
+				<div class="group cursor-pointer beauty-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/beauty/BF3.MP4#t=4" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay beauty-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Earring Moment</p>
+				</div>
+				<div class ="group cursor-pointer beauty-video-card">
+					<div
+						class="aspect-[9/16] relative overflow-hidden rounded-[2rem] shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
+						<video class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							src="videos/beauty/BF4.MOV#t=0" preload="metadata" playsinline></video>
+						<div class="absolute inset-0 flex items-center justify-center play-overlay beauty-play-overlay">
+							<span
+								class="material-icons text-white text-4xl opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">play_circle_filled</span>
+						</div>
+					</div>
+					<p class="text-center mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase">
+						Outfit reveal</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 md:py-24 bg-white dark:bg-zinc-900/30 overflow-hidden" id="photography">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+				<div class="lg:col-span-4">
+					<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Photography</h3>
+					<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest leading-tight mb-8">Examples
+					</h2>
+					<div class="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300">
+						<p class="mb-4">
+							I create <span class="text-primary font-medium">authentic</span>, lifestyle images with a <span
+								class="italic font-serif">clean, minimal aesthetic</span>, focused on aligning with your brand.
+						</p>
+						<p class="mb-4">
+							As an active Instagram and TikTok user, I stay on top of <span class="text-primary italic">trends</span>
+							to ensure content resonates. My style is <span class="text-primary font-medium">natural, engaging</span>,
+							and focused on <span class="italic">building brand awareness</span> and <span
+								class="text-primary font-medium">driving traffic</span>.
+						</p>
+					</div>
+				</div>
+				<div class="lg:col-span-8 relative">
+					<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+					<div class="grid grid-cols-3 gap-3 md:gap-4 rotate-2">
+						<div class="flex flex-col gap-4 mt-12">
+							<div class="relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-1.jpeg" />
+							</div>
+							<div class="relative overflow-hidden rounded-xl aspect-square cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-2.jpeg" />
+							</div>
+						</div>
+						<div class="flex flex-col gap-4">
+							<div class="relative overflow-hidden rounded-xl aspect-square cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-3.png" />
+							</div>
+							<div class="relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-4.png" />
+							</div>
+						</div>
+						<div class="flex flex-col gap-4 mt-8">
+							<div class="relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-5.jpeg" />
+							</div>
+							<div class="relative overflow-hidden rounded-xl aspect-square cursor-pointer photo-lightbox-trigger">
+								<img alt="Photography" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="photos/photography/photo-6.jpeg" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 md:py-32 bg-background-light dark:bg-background-dark" id="investments">
+		<div class="max-w-4xl mx-auto px-4">
+			<div class="text-center mb-20">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Rates</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Investment</h2>
+			</div>
+			<div class="space-y-1">
+				<!-- Item 1 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Single UGC Photo</h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">1 high-quality photo + 2 variations</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$100 – $150</div>
+				</div>
+				<!-- Item 2 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">UGC Video <span class="text-sm font-sans text-gray-500 dark:text-gray-400 ml-2">(15-30 sec)</span></h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">Raw footage + professionally edited video</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$220 – $290</div>
+				</div>
+				<!-- Item 3 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<div class="flex items-center gap-3">
+							<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Branded Reel <span class="text-sm font-sans text-gray-500 dark:text-gray-400 ml-2">(15-30 sec)</span></h4>
+							<span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-bold tracking-tighter uppercase">Recommended</span>
+						</div>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">Full hook-driven Reel with text &amp; trending audio</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$390 – $520</div>
+				</div>
+				<!-- Item 4 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Instagram Stories Package</h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">4–6 stories</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$180 – $260</div>
+				</div>
+				<!-- Item 5 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Video + Photo Bundle</h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">1 video + 3 photos</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$340 – $450</div>
+				</div>
+				<!-- Item 6 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Mini Package <span class="text-sm font-sans text-gray-500 dark:text-gray-400 ml-2">(3 videos)</span></h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">Bundle of three professional UGC videos</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$780 – $990</div>
+				</div>
+				<!-- Item 7 -->
+				<div class="investment-row border-b border-primary/10 py-6 md:py-8 px-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex-1">
+						<h4 class="font-serif text-xl md:text-2xl text-primary/90 dark:text-primary">Full Campaign Package</h4>
+						<p class="text-sm text-gray-500 dark:text-gray-400 font-sans mt-1">1 Branded Reel + 2 videos + 6 stories + 5 photos</p>
+					</div>
+					<div class="text-primary font-serif text-xl md:text-2xl">$1,350 – $1,750</div>
+				</div>
+			</div>
+			<div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+				<!-- Usage Rights -->
+				<div class="bg-white dark:bg-zinc-900/50 p-8 border border-primary/10 terms-card rounded-xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+					<h5 class="font-serif text-2xl text-primary mb-6 uppercase tracking-widest border-b border-primary/20 pb-4">Usage Rights</h5>
+					<ul class="space-y-4 text-sm font-sans">
+						<li class="flex justify-between text-gray-600 dark:text-gray-300"><span class="">Organic Use</span> <span class="text-primary font-bold">Included</span></li>
+						<li class="flex justify-between text-gray-600 dark:text-gray-300"><span class="">Paid Ads (Ad Code)</span> <span class="text-primary font-bold">+30%</span></li>
+						<li class="flex justify-between text-gray-600 dark:text-gray-300"><span class="">1 Year License</span> <span class="text-primary font-bold">+50%</span></li>
+						<li class="flex justify-between text-gray-600 dark:text-gray-300"><span class="">Perpetual Rights</span> <span class="text-primary font-bold">+120%</span></li>
+					</ul>
+				</div>
+				<!-- Terms -->
+				<div class="bg-white dark:bg-zinc-900/50 p-8 border border-primary/10 terms-card terms-card-reverse rounded-xl hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+					<h5 class="font-serif text-2xl text-primary mb-6 uppercase tracking-widest border-b border-primary/20 pb-4">Terms</h5>
+					<ul class="space-y-4 text-sm font-sans text-gray-600 dark:text-gray-400">
+						<li class="flex items-start"><span class="material-icons text-primary text-sm mr-3 mt-0.5">schedule</span><span class="">Turnaround: 3–7 business days</span></li>
+						<li class="flex items-start"><span class="material-icons text-primary text-sm mr-3 mt-0.5">payments</span><span class="">50% prepayment required</span></li>
+						<li class="flex items-start"><span class="material-icons text-primary text-sm mr-3 mt-0.5">inventory_2</span><span class="">Brand provides product</span></li>
+						<li class="flex items-start"><span class="material-icons text-primary text-sm mr-3 mt-0.5">history_edu</span><span class="">1 round of revisions included</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-8" id="videography"></div>
+
+	<!-- Photo Lightbox Modal -->
+	<div id="photo-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+		style="pointer-events: none;">
+		<div id="lightbox-backdrop" class="absolute inset-0"
+			style="background: rgba(0,0,0,0); backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;">
+		</div>
+		<button id="lightbox-close"
+			class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors z-20 opacity-0"
+			style="transition: opacity 0.3s ease;">
+			<span class="material-icons text-4xl">close</span>
+		</button>
+		<div id="lightbox-content" class="flex flex-col items-center max-w-3xl w-full z-10 opacity-0"
+			style="transform: scale(0.92); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.15, 1);">
+			<div id="lightbox-img-wrapper" class="relative inline-flex max-w-full">
+				<img id="lightbox-img" class="max-h-[75vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl" src=""
+					alt="" />
+			</div>
+			<p id="lightbox-desc" class="hidden"></p>
+			
+			<div id="lightbox-nav" class="flex items-center justify-center gap-6 mt-6 w-full hidden">
+				<button id="lightbox-prev" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors border border-white/20">
+					<span class="material-icons">chevron_left</span>
+				</button>
+				<div id="lightbox-dots" class="flex gap-2 items-center">
+				</div>
+				<button id="lightbox-next" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors border border-white/20">
+					<span class="material-icons">chevron_right</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 
+	<section class="py-16 bg-secondary dark:bg-zinc-800/50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+			<div
+				class="flex-1 grid grid-cols-4 md:grid-cols-6 gap-8 items-center opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+				<div class="text-xl font-serif font-bold text-center">NEOM</div>
+				<div class="text-xl font-sans font-black text-center">TRIP</div>
+				<div class="text-xl font-serif italic text-center">myoovi</div>
+				<div class="text-xl font-sans font-bold text-center">ESTRID</div>
+				<div class="text-xl font-mono text-center">MISFITS</div>
+				<div class="text-xl font-serif font-bold text-center">HAIRBURST</div>
+				<div class="text-xl font-sans font-bold text-center">smol</div>
+				<div class="text-xl font-serif text-center">ocado</div>
+				<div class="text-xl font-bold text-center">Quorn</div>
+				<div class="text-xl font-sans text-center">allplants</div>
+				<div class="text-xl font-serif text-center">Free*Soul</div>
+				<div class="text-xl font-light text-center">SKINNY DIP</div>
+			</div>
+			<div class="mt-12 md:mt-0 md:ml-12 text-center md:text-right flex-shrink-0">
+				<h3 class="text-script text-5xl md:text-6xl text-primary/80">Brand</h3>
+				<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest">Collabs</h2>
+			</div>
+		</div>
+	</section>
+	<section class="py-16 md:py-24 border-b border-primary/10" id="experience">
+		<div class="max-w-6xl mx-auto px-4">
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+				<div class="md:col-span-4 flex flex-col justify-center">
+					<h3 class="text-script text-5xl md:text-6xl text-primary/70 mb-2">Recent</h3>
+					<h2 class="font-serif text-4xl md:text-5xl text-primary uppercase tracking-widest leading-none">Feedback</h2>
+				</div>
+				<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div
+						class="bg-white dark:bg-card-dark p-6 rounded-none border-l-2 border-primary shadow-sm hover:shadow-md transition-shadow">
+						<p class="text-xs text-gray-400 mb-2 uppercase tracking-wide">Hi Kamila!</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 italic mb-3">"I had a quick look at all of them... I'm
+							speechless. I expected them to be good but I am actually blown away, especially by the UpCircle ones, the
+							flow and USP list is immaculate!"</p>
+						<p class="text-xs font-bold text-primary">Marketing Director</p>
+					</div>
+					<div
+						class="bg-white dark:bg-card-dark p-6 rounded-none border-l-2 border-primary shadow-sm hover:shadow-md transition-shadow">
+						<p class="text-xs text-gray-400 mb-2 uppercase tracking-wide">Hi Kamila,</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 italic mb-3">"Thank you so much for sending this through.
+							It's brilliant! You've completely understood the product and the intention behind it. Thank you so much!!"
+						</p>
+						<p class="text-xs font-bold text-primary">Social Media Manager</p>
+					</div>
+					<div
+						class="bg-white dark:bg-card-dark p-6 rounded-none border-l-2 border-primary shadow-sm hover:shadow-md transition-shadow">
+						<p class="text-xs text-gray-400 mb-2 uppercase tracking-wide">Little piece of internal feedback:</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 italic mb-3">"The company director loves your videos as
+							well!! - he said we should book you more 😉"</p>
+						<p class="text-xs font-bold text-primary">Agency Partner</p>
+					</div>
+					<div
+						class="bg-white dark:bg-card-dark p-6 rounded-none border-l-2 border-primary shadow-sm hover:shadow-md transition-shadow">
+						<p class="text-xs text-gray-400 mb-2 uppercase tracking-wide">Hi Kamila,</p>
+						<p class="text-sm text-gray-600 dark:text-gray-300 italic mb-3">"WE LOVE it, you've really nailed it. Thanks
+							so much! Your reel is doing great on our channel - we've received some lovely comments 😊"</p>
+						<p class="text-xs font-bold text-primary">Brand Owner</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	-->
+	
+	<section class="py-16 md:py-24" id="contact">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+				<div class="order-1 md:order-1 relative">
+					<div class="w-full max-w-sm mx-auto aspect-[3/4] relative">
+						<img alt="Kamila Portrait"
+							class="relative w-full h-full object-cover arch-image border-[12px] border-white z-10 shadow-lg grayscale-[10%]"
+							src="photos/footer-photo.png" />
+					</div>
+				</div>
+				<div class="order-2 md:order-2 space-y-8 text-center md:text-left items-center md:items-start flex flex-col">
+					<div>
+						<h3 class="text-script text-6xl md:text-7xl text-primary/70 mb-2">Work</h3>
+						<h2 class="font-serif text-5xl md:text-6xl text-primary uppercase tracking-widest leading-none">With Me</h2>
+					</div>
+					<div class="space-y-4 pt-6 flex flex-col items-center md:items-start">
+						<a class="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors group"
+							href="mailto:milochka_mkk@gmail.com" title="milochka_mkk@gmail.com">
+							<svg class="w-6 h-6 mr-3 text-primary group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+								<polyline points="22,6 12,13 2,6"></polyline>
+							</svg>
+							<span
+								class="border-b border-transparent group-hover:border-primary transition-colors">milochka_mkk@gmail.com</span>
+						</a>
+						<a class="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors group"
+							href="https://www.tiktok.com/@milka_mk2?_r=1&_t=ZP-96pxcAQkiEQ" target="_blank" rel="noopener noreferrer">
+							<svg class="w-6 h-6 mr-3 text-primary group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+							<span
+								class="border-b border-transparent group-hover:border-primary transition-colors">tiktok.com/@milka_mk2</span>
+						</a>
+						<a class="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors group"
+							href="https://www.instagram.com/__milka_mk?igsh=MWp3dTM2NXdma2oweA==" target="_blank" rel="noopener noreferrer">
+							<svg class="w-6 h-6 mr-3 text-primary group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+							<span
+								class="border-b border-transparent group-hover:border-primary transition-colors">instagram.com/__milka_mk</span>
+						</a>
+					</div>
+					<div class="pt-8">
+						<p class="text-gray-600 dark:text-gray-400">Let's bring your <span
+								class="italic text-primary font-serif">brand's vision</span> to life!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="script.js"></script>
+
+</body>
+
+</html>
